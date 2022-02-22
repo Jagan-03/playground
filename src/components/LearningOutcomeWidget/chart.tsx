@@ -1,4 +1,6 @@
 import useMeasure from "react-use-measure";
+
+// Visx Components
 import { scaleBand, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { Group } from "@visx/group";
 import { AxisLeft, AxisBottom } from "@visx/axis";
@@ -6,19 +8,14 @@ import { BarRounded, BarStack } from "@visx/shape";
 import { HtmlLabel } from "@visx/annotation";
 import { LegendOrdinal, LegendItem, LegendLabel } from "@visx/legend";
 
+// Material UI components
 import styled from "styled-components";
 import { Box } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import { createStyles, makeStyles } from "@mui/styles";
 
-// data
-const data = [
-  { skill: "Cognitive Skills", achieved: 34, notAchieved: 1 },
-  { skill: "Subject Matter", achieved: 17, notAchieved: 13 },
-  { skill: "Speech & Language", achieved: 20, notAchieved: 7 },
-  { skill: "Personal Devlelopment", achieved: 12, notAchieved: 10 },
-  { skill: "Gross Motor Skills", achieved: 17, notAchieved: 0 },
-];
+//Mock data
+import data from "../../library/LearningOutcomeSummary/learningOutcomeSummary";
 
 // margins
 const margin = {
@@ -32,6 +29,7 @@ const margin = {
 const defaultWidth = 100;
 const defaultHeight = 100;
 
+// MUI Styles
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     widgetWrapper: {
@@ -58,6 +56,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+// Styled components
 const TotalLabelTitle = styled.p`
   font-family: "Source Sans Pro";
   margin: 0;
@@ -94,9 +93,10 @@ const LegendLabelText = styled.p`
 
 const roundNumber = (num: number) => Math.round(num / 10) * 10;
 
-const Chart = () => {
+const LearningOutcomeSummary = () => {
   const [ref, bounds] = useMeasure();
   const classes = useStyles();
+
   const width = bounds.width || defaultWidth;
   const height = bounds.height || defaultHeight;
 
@@ -338,4 +338,4 @@ const Chart = () => {
   );
 };
 
-export default Chart;
+export default LearningOutcomeSummary;
